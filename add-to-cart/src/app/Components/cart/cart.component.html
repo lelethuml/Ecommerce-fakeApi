@@ -1,4 +1,52 @@
-<div class="container">
+<!-- <div class="container">
+    <div class="card">
+        <h5 class="card-title">My cart</h5>
+
+    </div>
+    <div class="center"> 
+        <img src="" alt="">
+        <h4> your cart is empty!</h4>
+        <h4>add item to it now</h4>
+        <button class="btn btn-primary">Shop now</button>
+    </div>
+</div> -->
+
+<ng-container *ngif="true">
+
+    <div class= "card-table">
+        <div class="card-prodyct">
+            <table class="table table-responsive">
+                <thead>
+                    <tr>
+                        <th>sr.No</th>
+                        <th>Product name</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Iphone</td>
+                        <td>Some image</td>
+                        <td>1this is branded phone</td>
+                        <td>50 000</td>
+                        <td>
+                            <button class ="btn btn-danger">Delete</button>
+                        </td>
+                        
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</ng-container>
+
+<ng-container *ngif="false">
+    <div class="container">
     <div class="card">
         <h5 class="card-title">My cart</h5>
 
@@ -10,3 +58,7 @@
         <button class="btn btn-primary">Shop now</button>
     </div>
 </div>
+
+
+
+</ng-container>
