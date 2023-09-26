@@ -1,19 +1,38 @@
-// Import the required modules
-const express = require('express');
+//importing modules
+const express = require('express')
+const sequelize = require('sequelize')
+const dotenv = require('dotenv').config()
+const cookieParser = require('cookie-parser')
+ const db = require('../backend/models')
+ const userRoutes = require ('../backend/routes/userRoutes')
+ const imageRoutes = require ('../backend/routes/imageRoutes')
+ 
 
-// Create an instance of the Express application
-const app = express();
+//setting up your port
+const PORT = process.env.PORT || 3000
 
-// Import the database connection from db.js
-const pool = require('../Backend/configurations/db'); // Adjust the path as needed
+//assigning the variable app to express
+const app = express()
 
-// Define a route that responds with "Hello, World!"
-app.get('/', (req, res) => {
-  res.send('Hello, World!');
-});
+//middleware
+app.use(express.json())
+app.use(express.urlencoded({ extended: false }))
+app.use(cookieParser())
 
-// Set the server to listen on port 3000
-const port = 3000;
-app.listen(port, () => {
-  console.log(`Server is listening on port ${port}`);
-});
+//synchronizing the database and forcing it to false so we dont lose data
+db.sequelize.sync({ force: true }).then(() => {
+    console.log("db has been re sync")
+})
+
+//routes for the user API
+app.use('/api/users', userRoutes)
+// Use updated image routes
+app.use('/images', imageRoutes);
+
+
+// Routes for the user API
+// app.use('/api/users', userRoutes);
+
+//listening to server connection
+app.listen(PORT, () => console.log(`Server is connected on ${PORT}`))
+
