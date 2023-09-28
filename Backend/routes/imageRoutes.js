@@ -1,11 +1,12 @@
-// routes/imageRoutes.js
 const express = require('express');
 const router = express.Router();
 
 const imageController = require('../controllers/imageController');
 
-router.post('/', imageController.uploadImage)
+// Create a new image
+router.post('/', imageController.createImage);
 
-// ... other image-related routes ...
+// Get a list of all images
+router.get('/', imageController.getAllImages);
 
 module.exports = router;

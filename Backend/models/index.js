@@ -20,5 +20,7 @@ const sequelize = new Sequelize(`postgres://postgres:Letsdoit!@localhost:5432/po
 //connecting to model
 db.users = require('./userModel') (sequelize, DataTypes)
 
+db.image = require('./image')(sequelize, DataTypes); // Make sure this line comes after defining 'Image' model
+
 //exporting the module
 module.exports = db
